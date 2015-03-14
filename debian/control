@@ -1,0 +1,18 @@
+Source: secpwgen
+Section: utils
+Priority: optional
+Maintainer: Benjamin Barenblat <bbaren@mit.edu>
+Build-Depends:
+ debhelper (>= 9),
+ libssl-dev
+Standards-Version: 3.9.6
+Homepage: http://zvrba.net/software/secpwgen.html
+
+Package: secpwgen
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: secure passphrase generator
+ secpwgen allows you to generate secure passwords and passphrases using a
+ variety of schemes, including Diceware, S/KEY, and simple random number
+ generation.  It uses OpenSSL to guarantee high-quality randomness, and it locks
+ memory to prevent secrets being leaked to swap.

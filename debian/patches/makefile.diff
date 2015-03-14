@@ -1,0 +1,31 @@
+From: Benjamin Barenblat <bbaren@mit.edu>
+Subject: Configure Makfile for Debian
+Forwarded: not-needed
+
+secpwgen uses no configure script; instead, builders are supposed to copy
+Makefile.proto to Makefile and modify it.  I go in the other order, because it’s
+easier on Quilt.
+--- a/Makefile.proto
++++ b/Makefile.proto
+@@ -30,9 +30,9 @@
+ ##
+ # If using OpenSSL, uncomment the following 3 lines.
+ ##
+-#CRYPTO_CFLAGS =
+-#CRYPTO_OBJS   = secure_random_openssl.o
+-#CRYPTO_LIBS   = -lcrypto
++CRYPTO_CFLAGS =
++CRYPTO_OBJS   = secure_random_openssl.o
++CRYPTO_LIBS   = -lcrypto
+ 
+ ##
+ # If using cryptlib, uncomment the following 3 lines.
+@@ -60,7 +60,7 @@ PREFIX = /usr/local
+ # Sometimes you have only dynamic libraries available. In that case COMMENT
+ # the following line.
+ ##
+-LINK_STATIC = -static
++#LINK_STATIC = -static
+ 
+ ##############################################################################
+ # NO USER MODIFIABLE PARTS AFTER THIS POINT
