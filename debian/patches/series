@@ -1,3 +1,4 @@
 makefile.diff
 spelling.diff
-manpage.diff
+manpage-content.diff
+manpage-warning.diff

@@ -1,0 +1,14 @@
+From: Benjamin Barenblat <bbaren@mit.edu>
+Subject: manpage: Fix usage of .Bd
+Forwarded: no
+--- a/secpwgen.1
++++ b/secpwgen.1
+@@ -197,7 +197,7 @@ command:
+ .Pp
+ gives the following typical output when run without root privileges:
+ .Pp
+-.Bd -literal -unfilled -offset indent
++.Bd -literal -offset indent
+ mlockall: Operation not permitted
+ WARNING: using insecure memory.
+ ----------------
