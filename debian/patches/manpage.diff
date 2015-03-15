@@ -1,0 +1,81 @@
+From: Benjamin Barenblat <bbaren@mit.edu>
+Subject: Remove Debian-irrelevant data from man page
+Forwarded: not-needed
+
+Remove references to cryptlib from the man page, as Debian builds this package
+using OpenSSL.
+
+Remove recommendation to statically link the binary, as this should’t be a
+decision the user has to make.
+--- a/secpwgen.1
++++ b/secpwgen.1
+@@ -1,4 +1,5 @@
+ .\" (c) 2004-2005 Zeljko Vrba <zvrba@globalnet.hr>
++.\" (c) 2015 Benjamin Barenblat <bbaren@mit.edu>
+ .\" 
+ .\" Permission is hereby granted, free of charge, to any person obtaining
+ .\" a copy of this software and associated documentation files (the
+@@ -166,7 +167,7 @@ case mlock is used with reduced security
+ .It
+ Disabling core-dumps in the event of crash.
+ .It
+-Cryptographically strong random number generator (using OpenSSL or cryptlib).
++Cryptographically strong random number generator (using OpenSSL).
+ The exact method for generation is described in its respective source file.
+ .El
+ .Pp
+@@ -176,11 +177,6 @@ the following used components: C library
+ random number generation, the kernel, and, ultimately, the system
+ administrator (although not a SW component :), a malicious sysadmin can modify
+ the kernel or system libraries to log somewhere all output of a program).
+-.Pp
+-You should build the program as statically linked, if at all possible. There
+-are numerous ways in which dynamic linking can be used to subvert this
+-programs' security. Unfortunately, there is no reliable nor portable way to
+-discover at run-time if the program is statically or dynamically linked.
+ .Ss OPENSSL NOTES
+ This program does not take any steps to initialize the entropy pool. OpenSSL
+ uses the system-provided /dev/[u]random as the source of randomness.
+@@ -192,11 +188,6 @@ error then
+ if you want really secure and unguessable passwords. There are many real-life
+ examples where the system security was compromised because of poor random
+ number generators.
+-.Ss CRYPTLIB NOTES
+-For maximum security, it is recommended to use cryptlib if at all possible.
+-Citing its manual, it is designed around a B3 kernel and tries very hard to
+-protect and sanitize all sensitive data (including locking it in memory if
+-possible). Also, there are no issues about initializing the entropy pool.
+ .Sh EXAMPLES
+ Generate an 4-word enhanced passphrase from the diceware dictionary:
+ .Nm
+@@ -245,11 +236,6 @@ recompiled.
+ This is a real bug in the program. Report this to the author
+ along with the exact command-line arguments, the compiler used,
+ operating system, etc. 
+-.It "ERROR: some garbage left to cryptlib."
+-This is an indication of the bug in the program. Report this to the author
+-along with other data described above. Nothing "bad" happened; everything
+-was properly cleaned by cryptlib on exit. It is just an indication that
+-some objects were not freed by the program before shutting down cryptlib.
+ .El
+ .Sh SEE ALSO
+ .Xr pwgen 1 ,
+@@ -269,17 +255,13 @@ some objects were not freed by the progr
+ .%T "RFC2289: A One-Time Password System"
+ .Re
+ .Rs
+-.%A Peter Gutmann
+-.%T cryptlib
+-.%O http://www.cs.auckland.ac.nz/~pgut001/cryptlib/
+-.Re
+-.Rs
+ .%T OpenSSL
+ .%O http://www.openssl.org
+ .Re
+ .Sh AUTHORS
+ The secpwgen program and this manual page were written by
+ .An Zeljko Vrba Aq zvrba@globalnet.hr .
++Benjamin Barenblat modified it for the Debian project.
+ .Sh BUGS
+ The program
+ .Sy will crash
