@@ -1,0 +1,14 @@
+From: Benjamin Barenblat <bbaren@mit.edu>
+Subject: Correct manpage spelling
+Forwarded: no
+--- a/secpwgen.1
++++ b/secpwgen.1
+@@ -147,7 +147,7 @@ learn the number of words and possibly t
+ easier to guess.
+ .Pp
+ In the author's opinion the program is written very carefully so that the
+-generated passphrase can't end up accidentaly on the swap or core file. The
++generated passphrase can't end up accidentally on the swap or core file. The
+ steps taken in securing the program:
+ .Bl -bullet
+ .It
