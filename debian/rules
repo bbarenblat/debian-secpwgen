@@ -13,6 +13,13 @@ export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 override_dh_auto_configure:
 	cp Makefile.proto Makefile
 
+.PHONY: override_dh_auto_install
+override_dh_auto_install:
+	# Upstream's installer violates the FHS, and there are only two files to
+	# install anyway.  Do it manually using secpwgen.install and
+	# secpwgen.manpages.
+	/bin/true
+
 .PHONY: override_dh_installdocs
 override_dh_installdocs:
 	dh_installdocs -XREADME
